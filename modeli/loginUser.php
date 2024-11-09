@@ -17,14 +17,19 @@
     $email = $_POST["email"];
     $sifra = $_POST["sifra"];
 
-    var_dump($email, $sifra);
+
 
     $rezultat = $baza->query("SELECT * FROM korisnici WHERE email = '$email' ");
 
     if($rezultat->num_rows == 1) {
         $korisnik = $rezultat->fetch_assoc();
-        var_dump($korisnik);
     }
     else {
         echo "korisnik ne postoji";
+    }
+
+    if( password_verify( $sifra, $korisnik["sifra"] ) ) {
+        echo "dobrodosli";
+    } else {
+        echo "pogresna lozinka";
     }
