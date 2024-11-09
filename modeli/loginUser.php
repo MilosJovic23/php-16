@@ -22,14 +22,17 @@
     $rezultat = $baza->query("SELECT * FROM korisnici WHERE email = '$email' ");
 
     if($rezultat->num_rows == 1) {
+
         $korisnik = $rezultat->fetch_assoc();
+
+        if( password_verify( $sifra, $korisnik["sifra"] ) ) {
+            echo "dobrodosli";
+        } else {
+            echo "pogresna lozinka";
+        }
+
     }
     else {
         echo "korisnik ne postoji";
     }
 
-    if( password_verify( $sifra, $korisnik["sifra"] ) ) {
-        echo "dobrodosli";
-    } else {
-        echo "pogresna lozinka";
-    }
