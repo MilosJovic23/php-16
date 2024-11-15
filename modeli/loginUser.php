@@ -14,7 +14,7 @@
 
     require_once "baza.php";
 
-    $email = $_POST["email"];
+    $email = mysqli_real_escape_string( $baza,$_POST["email"] );
     $sifra = $_POST["sifra"];
 
 
