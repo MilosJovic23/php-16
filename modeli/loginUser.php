@@ -1,7 +1,6 @@
 <?php
 
 
-
     if( !isset($_POST["email"] ) || empty($_POST["email"]) )
     {
         die("niste prosledili email");
@@ -18,7 +17,6 @@
     $sifra = $_POST["sifra"];
 
 
-
     $rezultat = $baza->query("SELECT * FROM korisnici WHERE email = '$email' ");
 
     if($rezultat->num_rows == 1) {
@@ -30,7 +28,6 @@
         } else {
             echo "pogresna lozinka";
         }
-
     }
     else {
         echo "korisnik ne postoji";
