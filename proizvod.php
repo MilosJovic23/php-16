@@ -1,18 +1,15 @@
 <?php
 
 
-
     if ( !isset($_GET["id"]) || empty($_GET["id"]) ) {
         die("fali id proizvod");
     }
-
 
     require_once "modeli/baza.php";
 
     $idProizvod = mysqli_real_escape_string( $baza, $_GET["id"] );
 
     $resultat = $baza->query("SELECT * from proizvodi WHERE id = $idProizvod ");
-
 
 
     if( $resultat->num_rows == 0 ) {
@@ -24,7 +21,6 @@
 
 
     var_dump($proizvod);
-
 
 
 ?>
